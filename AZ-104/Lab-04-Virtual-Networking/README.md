@@ -70,3 +70,42 @@ and scalability to support enterprise workloads.
 ### Documentation
 - 📄 **Detailed Notes:**  
   Documented as part of Lab 04 Task 2
+
+---
+
+## Task 3: Configure NSG and ASG Communication (Completed)
+
+### Summary
+- Implemented subnet-level security using Network Security Groups
+- Used Application Security Groups for scalable rule management
+- Allowed inbound HTTP/HTTPS traffic from ASG
+- Denied outbound internet traffic
+
+### Concepts Covered
+- NSG rule evaluation
+- ASG-based security
+- Inbound and outbound traffic control
+
+---
+
+## Task 4: Configure Public and Private Azure DNS (Completed)
+
+### Summary
+- Created public DNS zone with A records
+- Created private DNS zone for internal name resolution
+- Linked private DNS zone to ManufacturingVnet
+- Verified DNS resolution
+
+### Concepts Covered
+- Public vs Private DNS
+- DNS record sets
+- VNet DNS linking
+
+---
+
+## Lab Status
+- Task 1: ✅ Completed
+- Task 2: ✅ Completed
+- Task 3: ✅ Completed
+- Task 4: ✅ Completed
+
