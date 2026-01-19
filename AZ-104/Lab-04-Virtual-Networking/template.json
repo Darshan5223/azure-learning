@@ -2,8 +2,8 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "virtualNetworks_CoreServicesVnet_name": {
-            "defaultValue": "CoreServicesVnet",
+        "virtualNetworks_ManufacturingVnet_name": {
+            "defaultValue": "ManufacturingVnet",
             "type": "String"
         }
     },
@@ -12,12 +12,12 @@
         {
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2024-07-01",
-            "name": "[parameters('virtualNetworks_CoreServicesVnet_name')]",
+            "name": "[parameters('virtualNetworks_ManufacturingVnet_name')]",
             "location": "eastus",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
-                        "10.20.0.0/16"
+                        "10.30.0.0/16"
                     ]
                 },
                 "encryption": {
@@ -27,11 +27,11 @@
                 "privateEndpointVNetPolicies": "Disabled",
                 "subnets": [
                     {
-                        "name": "SharedServicesSubnet",
-                        "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_CoreServicesVnet_name'), 'SharedServicesSubnet')]",
+                        "name": "SensorSubnet1",
+                        "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ManufacturingVnet_name'), 'SensorSubnet1')]",
                         "properties": {
                             "addressPrefixes": [
-                                "10.20.10.0/24"
+                                "10.30.20.0/24"
                             ],
                             "delegations": [],
                             "privateEndpointNetworkPolicies": "Disabled",
@@ -40,11 +40,11 @@
                         "type": "Microsoft.Network/virtualNetworks/subnets"
                     },
                     {
-                        "name": "DatabaseSubnet",
-                        "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_CoreServicesVnet_name'), 'DatabaseSubnet')]",
+                        "name": "SensorSubnet2",
+                        "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ManufacturingVnet_name'), 'SensorSubnet2')]",
                         "properties": {
                             "addressPrefixes": [
-                                "10.20.20.0/24"
+                                "10.30.21.0/24"
                             ],
                             "delegations": [],
                             "privateEndpointNetworkPolicies": "Disabled",
@@ -60,13 +60,13 @@
         {
             "type": "Microsoft.Network/virtualNetworks/subnets",
             "apiVersion": "2024-07-01",
-            "name": "[concat(parameters('virtualNetworks_CoreServicesVnet_name'), '/DatabaseSubnet')]",
+            "name": "[concat(parameters('virtualNetworks_ManufacturingVnet_name'), '/SensorSubnet2')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_CoreServicesVnet_name'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_ManufacturingVnet_name'))]"
             ],
             "properties": {
                 "addressPrefixes": [
-                    "10.20.20.0/24"
+                    "10.30.21.0/24"
                 ],
                 "delegations": [],
                 "privateEndpointNetworkPolicies": "Disabled",
@@ -76,13 +76,13 @@
         {
             "type": "Microsoft.Network/virtualNetworks/subnets",
             "apiVersion": "2024-07-01",
-            "name": "[concat(parameters('virtualNetworks_CoreServicesVnet_name'), '/SharedServicesSubnet')]",
+            "name": "[concat(parameters('virtualNetworks_ManufacturingVnet_name'), '/SensorSubnet1')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_CoreServicesVnet_name'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_ManufacturingVnet_name'))]"
             ],
             "properties": {
                 "addressPrefixes": [
-                    "10.20.10.0/24"
+                    "10.30.20.0/24"
                 ],
                 "delegations": [],
                 "privateEndpointNetworkPolicies": "Disabled",

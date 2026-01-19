@@ -45,8 +45,28 @@ and scalability to support enterprise workloads.
 
 ---
 
-## Status
-- Task 1: ✅ Completed
-- Task 2: ⏳ Pending
-- Task 3: ⏳ Pending
-- Task 4: ⏳ Pending
+## Task 2: Create ManufacturingVnet using ARM Template (Completed)
+
+### Summary
+- Reused exported ARM template from Task 1
+- Modified address space and subnet ranges
+- Deployed ManufacturingVnet using Infrastructure as Code
+- Validated network isolation and deployment success
+
+### Configuration
+- Virtual Network: ManufacturingVnet
+- Address Space: 10.30.0.0/16
+- Subnets:
+  - SensorSubnet1 (10.30.20.0/24)
+  - SensorSubnet2 (10.30.21.0/24)
+- Region: East US
+
+### Concepts Covered
+- Infrastructure as Code (ARM Templates)
+- Reusable network deployments
+- CIDR-based address planning
+- Environment isolation
+
+### Documentation
+- 📄 **Detailed Notes:**  
+  Documented as part of Lab 04 Task 2
